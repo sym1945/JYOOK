@@ -21,7 +21,14 @@ namespace JYOOK.Application
 
         public double TotalProductCost => ProductCost * Weight;
 
-        public double SalesPrice => ProductCost / (1 - MarginRate / 100);
+        public double SalesPrice
+        {
+            get => ProductCost / (1 - MarginRate / 100);
+            set
+            {
+                MarginRate = 100 * (1 - (ProductCost / value));
+            }
+        } 
 
         public double TotalSalesPrice => SalesPrice * Weight;
 

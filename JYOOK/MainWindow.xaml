@@ -112,7 +112,7 @@
                                         <DataGridTextColumn Header="총 생산원가" Binding="{Binding TotalProductCost, ConverterCulture='ko-KR', StringFormat=C}" IsReadOnly="True" Width="*"/>
 
                                         <DataGridTextColumn Header="마진률" Binding="{Binding MarginRate, StringFormat=\{0\}%, Converter={local:NumToRateConverter}, ConverterParameter=1, UpdateSourceTrigger=LostFocus}" CellStyle="{StaticResource editableCellStyle}" Width="60"/>
-                                        <DataGridTextColumn Header="판매금액(1kg)" Binding="{Binding SalesPrice, ConverterCulture='ko-KR', StringFormat=C}" CellStyle="{StaticResource hilightCellStyle}" IsReadOnly="True" Width="*"/>
+                                        <DataGridTextColumn Header="판매금액(1kg)" Binding="{Binding SalesPrice, ConverterCulture='ko-KR', StringFormat=C, UpdateSourceTrigger=LostFocus}" CellStyle="{StaticResource hilightCellStyle}" Width="*"/>
                                         <DataGridTextColumn Header="총 판매금액" Binding="{Binding TotalSalesPrice, ConverterCulture='ko-KR', StringFormat=C}" IsReadOnly="True" Width="*"/>
                                     </DataGrid.Columns>
                                 </DataGrid>
