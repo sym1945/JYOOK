@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="positiveColorLight" Color="#a3d6ff"/>
+    <SolidColorBrush x:Key="negativeColorLight" Color="#ffadc5"/>
+
+    <SolidColorBrush x:Key="positiveColor" Color="#3686ff"/>
+    <SolidColorBrush x:Key="negativeColor" Color="#ff175b"/>
+
+</ResourceDictionary>
+    

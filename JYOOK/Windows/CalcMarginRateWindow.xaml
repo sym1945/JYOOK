@@ -1,0 +1,29 @@
+﻿<Window x:Class="JYOOK.CalcMarginRateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JYOOK"
+        mc:Ignorable="d"
+        Title="마진률 계산" Height="280" Width="600"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Foreground="{StaticResource negativeColor}" HorizontalAlignment="Center" TextAlignment="Center" FontSize="20">
+            <Run FontWeight="Bold">※ 주의 ※</Run><LineBreak/>
+            <Run>모든 상품의 마진률이 동일하게 설정됩니다.</Run>
+        </TextBlock>
+
+        <UniformGrid Grid.Row="1" Columns="2">
+            <TextBlock Text="희망 이익률" FontSize="20" Foreground="{StaticResource positiveColor}" HorizontalAlignment="Right"/>
+            <TextBox x:Name="marginRateTextBox" Text="{Binding WantedMarginRate, StringFormat=\{0\}%, Converter={local:NumToRateConverter}}" FontSize="20" Width="80" HorizontalAlignment="Left" Margin="15 0 0 0" GotFocus="TextBox_GotFocus"/>
+        </UniformGrid>
+        
+
+        <Button Grid.Row="3" Content="적용" Command="{Binding SaveCommand}"  Background="{StaticResource positiveColorLight}" Width="200" Height="40"/>
+    </Grid>
+</Window>
