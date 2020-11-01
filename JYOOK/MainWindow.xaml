@@ -20,6 +20,9 @@
         <!-- Menubar -->
         <Menu Grid.Row="0" Background="Transparent" Margin="10 0 10 0">
             <MenuItem Header="메뉴">
+                <MenuItem Header="불러오기" Click="LoadProduction_Click"/>
+                <MenuItem Header="저장하기" Click="SaveProduction_Click"/>
+                <Separator/>
                 <MenuItem Header="자재 관리" Click="ShowResourceManager_Click"/>
             </MenuItem>
         </Menu>

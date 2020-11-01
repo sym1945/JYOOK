@@ -50,7 +50,9 @@ namespace JYOOK.Application
 
         public event Action<SalesProductViewModel> PackingResourceUpdated;
 
-
+        public SalesProductViewModel()
+        {
+        }
         public SalesProductViewModel(IProduction production)
         {
             _Production = production;

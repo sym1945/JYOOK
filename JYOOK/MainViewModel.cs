@@ -98,6 +98,31 @@ namespace JYOOK
             }
         }
 
+        public void SetSalesManager(SalesManagerViewModel newModel)
+        {
+            if (newModel == null)
+                return;
+
+            SalesManagerViewModel.UnitPrice = newModel.UnitPrice;
+            SalesManagerViewModel.Weight = newModel.Weight;
+
+            foreach (var newProduction in newModel.Productions)
+            {
+                var production = SalesManagerViewModel.Productions.FirstOrDefault(d => d.Id == newProduction.Id);
+                if (production != null)
+                {
+                    production.Weight = newProduction.Weight;
+                    production.TransferRate = newProduction.TransferRate;
+                    production.MarginRate = newProduction.MarginRate;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Production 변경 시
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void ProductionViewMdoel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             var production = (ProductionViewModel)sender;
@@ -186,6 +211,11 @@ namespace JYOOK
             });
         }
 
+        /// <summary>
+        /// Livestock Info 변경 시
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void SalesManagerViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             var salesManager = (SalesManagerViewModel)sender;

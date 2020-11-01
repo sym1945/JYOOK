@@ -1,4 +1,6 @@
 ﻿using JYOOK.Application;
+using JYOOK.Infrastructure.Data;
+using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Input;
 
@@ -36,6 +38,57 @@ namespace JYOOK
                     _ResourceWindow.Hide();
                 }
             };
+        }
+
+        private void LoadProduction_Click(object sender, RoutedEventArgs e)
+        {
+            var viewModel = DataContext as MainViewModel;
+            if (viewModel == null)
+                return;
+
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "xml file|*.xml";
+            if (openFileDialog.ShowDialog(this) == true)
+            {
+                try
+                {
+                    var fileName = openFileDialog.FileName;
+
+                    var serializer = new XmlSerializer<SalesManagerViewModel>(fileName);
+                    var loadedViewModel = serializer.LoadXml();
+
+                    viewModel.SetSalesManager(loadedViewModel);
+                }
+                catch
+                {
+                    MessageBox.Show("파일 열기 실패");
+                }
+            }
+        }
+
+        private void SaveProduction_Click(object sender, RoutedEventArgs e)
+        {
+            var viewModel = DataContext as MainViewModel;
+            if (viewModel == null)
+                return;
+
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "xml file|*.xml";
+            if (saveFileDialog.ShowDialog(this) == true)
+            {
+                try
+                {
+                    var fileName = saveFileDialog.FileName;
+
+                    var serializer = new XmlSerializer<SalesManagerViewModel>(fileName);
+                    serializer.SaveXml(viewModel.SalesManagerViewModel);
+                }
+                catch
+                {
+                    MessageBox.Show("파일 저장 실패");
+                }
+            }
+
         }
 
         private void ShowResourceManager_Click(object sender, RoutedEventArgs e)

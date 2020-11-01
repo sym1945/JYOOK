@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using System.Xml.Serialization;
 
 namespace JYOOK.Application
 {
@@ -21,6 +22,7 @@ namespace JYOOK.Application
 
         public double TotalProductCost => ProductCost * Weight;
 
+        [XmlIgnore]
         public double SalesPrice
         {
             get => ProductCost / (1 - MarginRate / 100);
@@ -36,6 +38,10 @@ namespace JYOOK.Application
         public event Action SalesPriceChanged;
 
         public event Action ProductCostChanged;
+
+        public ProductionViewModel()
+        { 
+        }
 
         public ProductionViewModel(ILiveStockInfo liveStockInfo)
         {
